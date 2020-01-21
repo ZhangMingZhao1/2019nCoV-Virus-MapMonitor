@@ -1,0 +1,15 @@
+.logo {
+  width: 100px;
+  opacity: 0.5;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.HomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
