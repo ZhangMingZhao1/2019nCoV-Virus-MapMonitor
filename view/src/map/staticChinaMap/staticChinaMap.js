@@ -18,6 +18,9 @@ function EchartHotMapCmt() {
       title: {
         text: "2020年新型肺炎病毒疫情地图",
         subtext: "(刷新即可重新采集实时数据)",
+        subtextStyle: {
+          color: "blue"
+        },
         x: "center"
       },
       tooltip: {
@@ -62,6 +65,12 @@ function EchartHotMapCmt() {
               show: false
             }
           },
+          itemStyle: {
+            emphasis: {
+              areaColor: "" //设置为空字符串可使颜色不变
+            }
+          },
+
           data: retData //数据
         }
       ]
