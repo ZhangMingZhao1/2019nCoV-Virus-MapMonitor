@@ -10,7 +10,7 @@ app.use(
       if (ctx.url === "/test") {
         return false;
       }
-      return "http://localhost:3000";
+      return "*";
     },
     exposeHeaders: ["WWW-Authenticate", "Server-Authorization"],
     maxAge: 5,
