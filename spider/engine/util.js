@@ -11,33 +11,26 @@ const getData = () => {
       .get(url)
       .then((HtmlStr) => {
         let $ = cheerio.load(HtmlStr.data);
-        const len = $(".descList___3iOuI span").get().length;
-        for (let i = 0; i < len; i++) {
-          const itemData = $(".descList___3iOuI span").get(i).children[1].data;
-          console.log(itemData);
-          const namet = itemData.substr(0, 3);
-          let name = namet;
-          if (namet.includes("壮") || namet.includes("回")) {
-            name = namet.substr(0, 2);
+        const len = $(".areaBlock1___3V3UU .subBlock1___j0DGa").get().length;
+        console.log("len", len);
+        let name, num;
+        for (let i = 1; i < len; i++) {
+          if ($(".areaBlock1___3V3UU .subBlock1___j0DGa").get(i).children[1]) {
+            name = $(".areaBlock1___3V3UU .subBlock1___j0DGa").get(i)
+              .children[1].data;
           }
-          if (namet.includes("省") || namet.includes("市")) {
-            name = namet.substr(0, 2);
-          }
-
-          const num = itemData.match(/[0-9]+/g);
+          num = $(".areaBlock1___3V3UU .subBlock2___E7-fW").get(i).children[0]
+            .data;
+          console.log("name", name);
           console.log("num", num);
+
           retData.push({
             name: name.trim(),
-            value: parseInt(
-              num.reduce((total, item) => {
-                return parseInt(total, 10) + parseInt(item, 10);
-              }),
-              10
-            )
+            value: parseInt(num, 10)
           });
         }
         resolve(retData);
-        console.log(retData);
+        // console.log(retData);
       })
       .catch((err) => {
         reject(err);
